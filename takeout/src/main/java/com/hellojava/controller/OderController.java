@@ -47,7 +47,7 @@ public class OderController {
        Long minutes=null;
         List<Order> orders=orderShoppingService.loadBystatu();
         for(int i=0;i<orders.size();i++){
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
             String orderdate=orders.get(i).getOrderTime();
             try {
                 Date ordertime=dateFormat.parse(orderdate);

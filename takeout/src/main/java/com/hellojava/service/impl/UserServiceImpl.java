@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
         QueryResult<User> queryResult = new QueryResult<>();
         int i = oneByUser != null ? 1 : 0;
         queryResult.setInteger(i);
+        queryResult.setUser(oneByUser);
         return new QueryResponseResult(CommonCode.SUCCESS,queryResult);
     }
 

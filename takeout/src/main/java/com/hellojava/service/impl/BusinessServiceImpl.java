@@ -82,7 +82,5 @@ public class BusinessServiceImpl implements BusinessService {
         QueryResult<Evaluation> evaluationQueryResult = new QueryResult<>();
         evaluationQueryResult.setList(Es);
         return new QueryResponseResult<>(CommonCode.SUCCESS,evaluationQueryResult);
-
-
     }
 }

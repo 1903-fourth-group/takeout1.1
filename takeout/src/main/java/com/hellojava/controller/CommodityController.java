@@ -44,4 +44,27 @@ public class CommodityController {
     public QueryResponseResult loadByIdCommodity(int comId){
         return commodityService.loadById(comId);
     }
+
+
+    /**
+     * 通过前台传递的商家Id 查询该商家拥有的所有商品分类
+     * @param busId
+     * @return
+     */
+    @RequestMapping(value = "/loadByComIdCommodityType/{busId}",method = RequestMethod.GET)
+    @ApiOperation(value = "查询该商家所有的商品分类")
+    public QueryResponseResult loadByComIdCommodityType(int busId){
+        return commodityService.findAllBybusId(busId);
+    }
+
+    /**
+     * 通过前台传递的商品分类ID 查询该分类下的商品
+     * @param comType
+     * @return
+     */
+    @RequestMapping(value = "/loadByComTypecommodity/{comType}",method = RequestMethod.GET)
+    @ApiOperation(value = " 通过前台传递的商品分类ID 查询该分类下的商品")
+    public QueryResponseResult loadByComTypecommodity(int comType){
+        return commodityService.findAllBycomType(comType);
+    }
 }

@@ -23,4 +23,6 @@ public class Commodity implements Serializable {
     private int comSalesPerMonth;
     @Column(name = "com_bus")
     private int comBus;
+    @Column(name="com_type")
+    private int comType;
 }

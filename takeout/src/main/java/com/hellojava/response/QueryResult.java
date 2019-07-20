@@ -1,5 +1,6 @@
 package com.hellojava.response;
 
+import com.hellojava.entity.User;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,4 +16,6 @@ public class QueryResult<T> {
     private long total;
     //判断
     private Integer integer;
+
+    private User user;
 }

@@ -8,7 +8,7 @@ public interface BusinessService {
 
 //    List<Business> loadAll();
 
-     QueryResponseResult  loadByTypeId(int typePid);
+     QueryResponseResult loadByTypeId(int typePid);
 
      QueryResponseResult loadBybusId(int busId);
 

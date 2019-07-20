@@ -13,4 +13,8 @@ public interface CommodityService {
     QueryResponseResult loadById(int comId);
 
     QueryResponseResult findAllBycomBus(int comBus);
+
+    QueryResponseResult findAllBybusId(int busId);
+
+    QueryResponseResult findAllBycomType(int comType);
 }
