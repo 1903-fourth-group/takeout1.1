@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc8a8eef-fadb-4266-bdbe-cb160e159312" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hellojava/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hellojava/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hellojava/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hellojava/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/oderShoppingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/oderShoppingMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fc8a8eef-fadb-4266-bdbe-cb160e159312" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,8 +88,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hellojava/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="224">
+              <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hellojava/entity/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="21" column="31" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -311,12 +316,12 @@
       <option name="presentableId" value="Default" />
       <updated>1563592944504</updated>
       <workItem from="1563592947257" duration="743000" />
-      <workItem from="1563607223700" duration="4337000" />
+      <workItem from="1563607223700" duration="4986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5080000" />
+    <option name="totallyTimeSpent" value="5729000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -420,10 +425,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hellojava/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hellojava/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        <state relative-caret-position="224">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
         </state>
       </provider>
     </entry>
