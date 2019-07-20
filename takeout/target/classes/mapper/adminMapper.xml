@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hellojava.dao.AdminDao.AdminMapper">
+    <resultMap id="adminResult" type="admin">
+        <id column="admin_id" property="adminId"></id>
+        <result column="admin_name" property="adminName"></result>
+        <result column="admin_password" property="adminPassword"></result>
+    </resultMap>
+    <select id="loadByAdmin" parameterType="admin" resultMap="adminResult">
+        select * from admin_info
+        <where>
+            admin_name=#{adminName} and admin_password=#{adminPassword}
+        </where>
+    </select>
+</mapper>

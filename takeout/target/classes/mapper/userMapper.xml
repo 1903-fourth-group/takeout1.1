@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hellojava.dao.UserDao.UserMapper">
+    <resultMap id="userResult" type="user">
+    <id column="user_id" property="userId"></id>
+        <result column="via" property="via"></result>
+        <result column="user_name" property="userName"></result>
+        <result column="user_password" property="userPassword"></result>
+        <result column="phone" property="phone"></result>
+        <result column="address" property="address"></result>
+        <result column="user_email" property="userEmail"></result>
+        <result column="balance" property="balance"></result>
+     </resultMap>
+    <select id="findAll" resultMap="userResult">
+        select * from user_info
+    </select>
+    <select id="findOneByUser" resultMap="userResult">
+        select * from user_info where user_name=#{userName} and user_password=#{userPassword}
+    </select>
+    <insert id="addUser" parameterType="user">
+        insert into user_info VALUES(DEFAULT,#{via},#{userName},#{userPassword},#{phone},#{address},#{userEmail},#{balance})
+    </insert>
+</mapper>
+
