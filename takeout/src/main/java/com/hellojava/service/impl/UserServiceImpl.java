@@ -52,5 +52,15 @@ public class UserServiceImpl implements UserService {
         return new QueryResponseResult(CommonCode.SUCCESS,queryResult1);
     }
 
+    @Override
+    public Double loadUserMoney(Integer userId) {
+        return userDao.loadUserMoney(userId);
+    }
+
+    @Override
+    public void updateUserMoney(Double totolPrice,Integer userId) {
+        userDao.updateUserMoney(totolPrice,userId);
+    }
+
 
 }

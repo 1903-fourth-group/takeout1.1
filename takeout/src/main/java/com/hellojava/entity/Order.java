@@ -17,8 +17,6 @@ public class Order implements Serializable {
     private String orderId;
     @Column(name = "order_business")
     private Integer orderBusiness;
-    @Column(name = "current_user")
-    private String currentUser;
     @Column(name = "order_address")
     private String orderAddress;
     @Column(name = "order_phone")

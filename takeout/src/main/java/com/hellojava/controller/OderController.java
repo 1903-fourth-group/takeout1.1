@@ -1,15 +1,14 @@
 package com.hellojava.controller;
 
 import com.hellojava.entity.Order;
+import com.hellojava.response.QueryResponseResult;
+//import com.hellojava.service.impl.ComService;
 import com.hellojava.service.impl.OrderShoppingService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,13 +17,16 @@ import java.util.List;
 import java.util.Random;
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("order")
 public class OderController {
     @Autowired
     private OrderShoppingService orderShoppingService;
-
+//    @Autowired
+//    private ComService comServiceu
     @ResponseBody
     @RequestMapping(value = "insertorder",method = RequestMethod.POST)
+
+
     public void insertorder(@RequestBody Order shoppingOrder, HttpServletRequest request){
         String orderid = "";
         Random random = new Random();
@@ -38,10 +40,8 @@ public class OderController {
         shoppingOrder.setOrderId(orderid);
         orderShoppingService.insertOrder(shoppingOrder);
         request.getSession().setAttribute("orderid",orderid);
-    }
 
-    @ResponseBody
-    @RequestMapping("/state")
+    }
     @Scheduled(fixedRate = 6000)
     public void  state(){
        Long minutes=null;
@@ -64,6 +64,12 @@ public class OderController {
 
         }
 
+
+    }
+    @ResponseBody
+    @RequestMapping(value = "loadAll",method = RequestMethod.GET)
+    public QueryResponseResult loadAll(@RequestParam("userId")Integer userId){
+        return orderShoppingService.loadAll(userId);
 
     }
 

@@ -12,5 +12,9 @@ public interface UserService {
       QueryResponseResult findOneByUser(User user);
 //      用户注册
       QueryResponseResult addUser(User user);
+
+      //查询账户金额
+      Double loadUserMoney(Integer userId);
+      void updateUserMoney(Double totolPrice,Integer userId);
 }
 

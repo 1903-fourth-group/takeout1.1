@@ -10,4 +10,5 @@ public interface OrderDao {
     public int insertOrder(Order shoppingOrder);
     public List<Order> loadBystatu();
     public void updateorderstatu(String id);
+    public List<Order> loadAll(Integer userId);
 }
