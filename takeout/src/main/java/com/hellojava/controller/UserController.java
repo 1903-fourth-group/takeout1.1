@@ -27,9 +27,9 @@ public class UserController {
         return all;
     }
 //    登录
-    @RequestMapping(value = "/login/{user}",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ApiOperation("登录")
-    public QueryResponseResult loginUser(@PathVariable User user){
+    public QueryResponseResult loginUser(User user){
 //        if(user.getUserName()!=null&&user.getUserPassword()!=null){
 //            userService.findOneByUser(user);
 //            return 1;
