@@ -7,13 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="takeout" />
-        <module name="take-out" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="takeout" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="take-out" options="-parameters" />
       <module name="takeout" options="-parameters" />
     </option>
   </component>
