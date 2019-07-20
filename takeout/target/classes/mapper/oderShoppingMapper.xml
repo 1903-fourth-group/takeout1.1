@@ -5,7 +5,7 @@
 <resultMap id="orderResult" type="order">
     <id column="order_id" property="orderId"></id>
     <result column="order_business" property="orderBusiness"></result>
-    <result column="current_user" property="currentUser"></result>
+    <result column="recive_people" property="recivePeople"></result>
     <result column="order_address" property="orderAddress"></result>
     <result column="order_phone" property="orderPhone"></result>
     <result column="total_price" property="totalPrice"></result>

@@ -27,6 +27,8 @@ public class Order implements Serializable {
     private String orderTime;
     @Column(name = "order_state")
     private Integer orderState;
+    @Column(name = "recive_people")
+    private String recivePeople;
     @Column(name = "user_id")
     private Integer userId;
 }

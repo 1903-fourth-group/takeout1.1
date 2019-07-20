@@ -7,6 +7,7 @@ import com.hellojava.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,9 +27,9 @@ public class UserController {
         return all;
     }
 //    登录
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login/{user}",method = RequestMethod.POST)
     @ApiOperation("登录")
-    public QueryResponseResult loginUser(User user){
+    public QueryResponseResult loginUser(@PathVariable User user){
 //        if(user.getUserName()!=null&&user.getUserPassword()!=null){
 //            userService.findOneByUser(user);
 //            return 1;
