@@ -1,6 +1,7 @@
 package com.hellojava.controller;
 
 import com.hellojava.utils.UploadPic;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 调用uploadPic的getPic方法：将图片文件放入七牛云，并返回相应图片名，直接存入该去的库
  */
 @Controller
+@Api(tags ="图片操作")
 public class QiniuExample {
     @Autowired
     private UploadPic uploadPic;

@@ -3,6 +3,9 @@ package com.hellojava.controller;
 
 import com.hellojava.dao.BusinessDao.BusinessRepository;
 import com.hellojava.entity.Business;
+import com.hellojava.entity.BusinessType;
+import com.hellojava.service.impl.BusinessTypeServiceImpl;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +18,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
+@ResponseBody
+@Api(tags ="商家信息管理")
 @Controller
 public class BackBusinessController {
 
     @Autowired
     private BusinessRepository businessRepository;
+
+    @Autowired
+    private BusinessTypeServiceImpl businessTypeService;
 
     //增加商家信息
     @RequestMapping(value = "/insertbusiness",method = RequestMethod.POST)
@@ -35,7 +43,9 @@ public class BackBusinessController {
     @ApiOperation(value = "加载商家信息", notes = "查询商家")
     public List<Business> select(Model model){
         List<Business> businessList=businessRepository.findAll();
-        model.addAttribute("userList", businessList);
+        List<BusinessType> businessTypes = businessTypeService.loadBusTypeName();
+        model.addAttribute("businessList", businessList);
+        model.addAttribute("businessTypes",businessTypes);
         return businessList;
     }
 

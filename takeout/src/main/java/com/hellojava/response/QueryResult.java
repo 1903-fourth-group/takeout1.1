@@ -1,5 +1,7 @@
 package com.hellojava.response;
 
+import com.hellojava.entity.Business;
+import com.hellojava.entity.Order;
 import com.hellojava.entity.User;
 import lombok.Data;
 import lombok.ToString;
@@ -18,4 +20,9 @@ public class QueryResult<T> {
     private Integer integer;
 
     private User user;
+
+    private Order order;
+
+    private Business business;
+
 }

@@ -4,6 +4,7 @@ package com.hellojava.controller;
 import com.hellojava.entity.Admin;
 import com.hellojava.response.QueryResponseResult;
 import com.hellojava.service.AdminService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@Api(tags ="管理员登录")
 @ResponseBody
 @RequestMapping("/admin")
 public class AdminController {

@@ -25,8 +25,9 @@ public class CommodityController {
      * @param comBus
      * @return
      */
-    @RequestMapping(value = "/loadByTypeId/{typePid}",method = RequestMethod.GET)
-    @ApiOperation(value = "查询该商家所有的商品")
+    @RequestMapping(value = "/loadByTypeId/{comBus}",method = RequestMethod.GET)
+    @ApiOperation(value = "查询该商家所有的商品",notes = "所需参数:商家id(typePid)" +
+            "\n"+"返回参数：商品基本信息(商品表Commodity信息)")
     public QueryResponseResult findAllBycomBus(int comBus){
         return commodityService.findAllBycomBus(comBus);
 
@@ -40,7 +41,8 @@ public class CommodityController {
      * @return
      */
     @RequestMapping(value = "/loadByIdCommodity/{comId}",method = RequestMethod.GET)
-    @ApiOperation(value = "查询商品详细信息")
+    @ApiOperation(value = "查询商品详细信息",notes = "所需参数:商品id(comBus)" +
+            "\n"+"返回参数：商品基本信息(商品表Commodity信息)")
     public QueryResponseResult loadByIdCommodity(int comId){
         return commodityService.loadById(comId);
     }
@@ -52,7 +54,8 @@ public class CommodityController {
      * @return
      */
     @RequestMapping(value = "/loadByComIdCommodityType/{busId}",method = RequestMethod.GET)
-    @ApiOperation(value = "查询该商家所有的商品分类")
+    @ApiOperation(value = "查询该商家所有的商品分类",notes = "所需参数:商家id(busId)" +
+            "\n"+"返回参数：商品基本信息(商品分类表CommodityType信息)")
     public QueryResponseResult loadByComIdCommodityType(int busId){
         return commodityService.findAllBybusId(busId);
     }
@@ -63,7 +66,8 @@ public class CommodityController {
      * @return
      */
     @RequestMapping(value = "/loadByComTypecommodity/{comType}",method = RequestMethod.GET)
-    @ApiOperation(value = " 通过前台传递的商品分类ID 查询该分类下的商品")
+    @ApiOperation(value = " 通过前台传递的商品分类ID 查询该分类下的商品",notes = "所需参数:商品分类id(comType)" +
+            "\n"+"返回参数：商品基本信息(商品分类表CommodityType信息)")
     public QueryResponseResult loadByComTypecommodity(int comType){
         return commodityService.findAllBycomType(comType);
     }

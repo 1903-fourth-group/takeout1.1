@@ -4,6 +4,7 @@ package com.hellojava.controller;
 import com.hellojava.entity.User;
 import com.hellojava.response.QueryResponseResult;
 import com.hellojava.service.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
+@Api(tags ="登录操作")
 @ResponseBody
 @RequestMapping("/user")
 public class UserController {
@@ -20,35 +24,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/findAll",method = RequestMethod.GET)
-    @ApiOperation("查询所有")
-    public QueryResponseResult findAll() {
-        QueryResponseResult all = userService.findAll();
-        return all;
-    }
-//    登录
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    @ApiOperation("登录")
-    public QueryResponseResult loginUser(User user){
-//        if(user.getUserName()!=null&&user.getUserPassword()!=null){
-//            userService.findOneByUser(user);
-//            return 1;
-//        }else {
-//            return 0;
-//        }
+    @ApiOperation(value = "登录",notes="test(integer代表状态): 0代表密码错误，1代表密码成功;" +"\n"+
+            "所需参数：用户名（userName）、密码（userPassword）")
+    public QueryResponseResult loginUser(User user, HttpServletRequest request){
         QueryResponseResult oneByUser = userService.findOneByUser(user);
+        User curentuser=oneByUser.getQueryResult ().getUser ();
+        request.getSession ().setAttribute ("curentuser",curentuser);
         return oneByUser;
     }
-//    注册
+    //    注册
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    @ApiOperation("注册")
+    @ApiOperation(value = "注册",notes="test(integer代表状态): 0代表注册失败，1代表注册成功;"+"\n"+
+            "所需参数：邮箱（userEmail）、密码（userPassword）")
     public QueryResponseResult registerUser(User user) {
-//        if(user.getUserName()!=null && user.getUserPassword()!=null && user.getUserEmail()!=null){
-//            userService.addUser(user);
-//            return "1";
-//        }else {
-//            return "0";
-//        }
         QueryResponseResult addUser = userService.addUser(user);
         return addUser;
     }

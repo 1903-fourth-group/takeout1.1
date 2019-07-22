@@ -2,8 +2,10 @@ package com.hellojava.service.impl;
 
 import com.hellojava.dao.BusinessDao.BusinessRepository;
 import com.hellojava.dao.BusinessDao.EvaluationRepository;
+import com.hellojava.dao.BusinessTypeDao.BusinessTypeRepository;
 import com.hellojava.dao.OrderDao.OrderRepository;
 import com.hellojava.entity.Business;
+import com.hellojava.entity.BusinessType;
 import com.hellojava.entity.Evaluation;
 import com.hellojava.entity.Order;
 import com.hellojava.response.CommonCode;
@@ -27,12 +29,30 @@ public class BusinessServiceImpl implements BusinessService {
     private EvaluationRepository evaluationRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private BusinessTypeRepository businessTypeRepository;
 
-
-    // 通过商品类型查找该类型所有商家
+    // 通过商品大类型查找该类型下的小分类
     @Override
-    public QueryResponseResult loadByTypeId(int typePid){
-        List<Business> businesses = businessRepository.selectBusinessAll(typePid);
+    public QueryResponseResult selectBusinessTypeAll(String busTypeName){
+        List<BusinessType> businesses = businessTypeRepository.selectBusinessTypeAll(busTypeName);
+        QueryResult<BusinessType> businessQueryResult = new QueryResult<>();
+        businessQueryResult.setList(businesses);
+        return new QueryResponseResult<>(CommonCode.SUCCESS,businessQueryResult);
+    }
+
+    // 查询大分类下的所有商家
+    @Override
+    public QueryResponseResult selectBusinessAll(String busTypeName){
+        List<Business> businesses = businessRepository.selectBusinessAll(busTypeName);
+        QueryResult<Business> businessQueryResult = new QueryResult<>();
+        businessQueryResult.setList(businesses);
+        return new QueryResponseResult<>(CommonCode.SUCCESS,businessQueryResult);
+    }
+
+    @Override
+    public QueryResponseResult selectBusinessAll(int busType) {
+        List<Business> businesses = businessRepository.selectBusinessTypeAll(busType);
         QueryResult<Business> businessQueryResult = new QueryResult<>();
         businessQueryResult.setList(businesses);
         return new QueryResponseResult<>(CommonCode.SUCCESS,businessQueryResult);
@@ -73,7 +93,6 @@ public class BusinessServiceImpl implements BusinessService {
         }
         List<Evaluation> Es = new ArrayList<>();
         for (int y = 0; y < i.size(); y++) {
-
             Evaluation evaluation = evaluationRepository.selectByEvaOrder(i.get(y));
             if (evaluation!=null){
                 Es.add(evaluation);
@@ -82,5 +101,26 @@ public class BusinessServiceImpl implements BusinessService {
         QueryResult<Evaluation> evaluationQueryResult = new QueryResult<>();
         evaluationQueryResult.setList(Es);
         return new QueryResponseResult<>(CommonCode.SUCCESS,evaluationQueryResult);
+    }
+
+
+
+    @Override
+    public QueryResponseResult selectByUserIdCollection(int userId) {
+        List<Business> businesses = businessRepository.selectByUserIdCollection(userId);
+        QueryResult<Business> BusinessQueryResult = new QueryResult<>();
+        BusinessQueryResult.setList(businesses);
+        return new QueryResponseResult<>(CommonCode.SUCCESS,BusinessQueryResult);
+    }
+
+
+    @Override
+    public int addUserIdCollection(int userId, int busId) {
+        return businessRepository.addUserIdCollection(userId, busId);
+    }
+
+    @Override
+    public int delectUserIdCollection(int userId, int busId) {
+        return businessRepository.deleteUserIdCollection(userId, busId);
     }
 }

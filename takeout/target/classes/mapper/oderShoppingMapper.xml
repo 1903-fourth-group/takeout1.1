@@ -5,17 +5,18 @@
 <resultMap id="orderResult" type="order">
     <id column="order_id" property="orderId"></id>
     <result column="order_business" property="orderBusiness"></result>
-    <result column="recive_people" property="recivePeople"></result>
     <result column="order_address" property="orderAddress"></result>
     <result column="order_phone" property="orderPhone"></result>
     <result column="total_price" property="totalPrice"></result>
     <result column="order_time" property="orderTime"></result>
     <result column="order_state" property="orderState"></result>
     <result column="user_id" property="userId"></result>
+    <result column="recive_people" property="recivePeople"></result>
+
 </resultMap>
 <insert id="insertOrder" parameterType="order">
-        insert into shopping_order value (#{orderId},#{orderBusiness},#{currentUser},
-        #{orderAddress},#{orderPhone},#{totalPrice},#{orderTime},#{orderState},#{userId})
+        insert into shopping_order value (#{orderId},#{orderBusiness},
+        #{orderAddress},#{orderPhone},#{totalPrice},#{orderTime},#{orderState},#{userId},#{recivePeople})
     </insert>
 <select id="loadBystatu" resultMap="orderResult">
        select * from shopping_order where order_state=2
@@ -23,7 +24,16 @@
 <update id="updateorderstatu" parameterType="string">
         update shopping_order set order_state=3 where order_id=#{rdm}
     </update>
-<select id="loadAll" parameterType="int" resultMap="orderResult">
-        select * from shopping_order where user_id=#{userid}
+    <select id="loadorderInfoById" parameterType="string" resultMap="orderResult">
+        select * from shopping_order where order_id=#{orderId}
     </select>
+    <select id="loadOidByUid" parameterType="int" resultType="string">
+        select order_id from shopping_order where user_id=#{userId}
+    </select>
+    <insert id="insertordercom" parameterType="map">
+        insert into order_business values
+        <foreach collection="comids" separator=","  item="comid">
+            (${orderids[0]},#{comid})
+        </foreach>
+    </insert>
 </mapper>

@@ -13,25 +13,9 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userDao;
-    @Override
-    public QueryResponseResult findAll() {
-        List<User> all = userDao.findAll();
-        QueryResult<User> userQueryResult = new QueryResult<>();
-        userQueryResult.setList(all);
-        return new QueryResponseResult(CommonCode.SUCCESS,userQueryResult);
-    }
-
-//    @Override
-//    public User findOneByUser(User user) {
-//        User oneByUser = userDao.findOneByUser(user);
-//        if(oneByUser!=null){
-//            return oneByUser;
-//        }else {
-//            return null;
-//        }
-//    }
     @Override
     public QueryResponseResult findOneByUser(User user) {
         User oneByUser = userDao.findOneByUser(user);
