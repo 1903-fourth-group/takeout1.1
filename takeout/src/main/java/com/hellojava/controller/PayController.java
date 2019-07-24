@@ -42,6 +42,4 @@ public class PayController {
         queryResult.setInteger(result);
         return new QueryResponseResult<>(CommonCode.SUCCESS, queryResult);
     }
-
-
 }

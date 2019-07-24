@@ -21,5 +21,10 @@ public class Evaluation implements Serializable {
     private int evaGrade;
     @Column(name = "eva_img")
     private String evaImg;
-
+    @Column(name = "eva_time")
+    private String evaTime;
+    @Column(name = "user_name")
+    private String userName;
+    @Column(name = "user_via")
+    private String userVia;
 }

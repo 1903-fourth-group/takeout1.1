@@ -1,6 +1,7 @@
 package com.hellojava.entity;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,4 +26,7 @@ public class Commodity implements Serializable {
     private int comBus;
     @Column(name="com_type")
     private int comType;
+
+    @Transient
+    private MultipartFile pic;
 }

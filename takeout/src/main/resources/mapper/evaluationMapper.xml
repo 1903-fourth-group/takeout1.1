@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hellojava.dao.Evaluation.EvaluateMapper">
+    <resultMap id="result" type="evaluation">
+        <id column="eva_id" property="evaId"></id>
+        <result column="eva_order" property="evaOrder"></result>
+        <result column="eva_detail" property="evaDetail"></result>
+        <result column="eva_grade" property="evaGrade"></result>
+        <result column="eva_img" property="evaImg"></result>
+    </resultMap>
+    <insert id="saveEvaluation" parameterType="evaluation">
+        insert into evaluation values(default,#{evaOrder},#{evaDetail},#{evaGrade},#{evaImg},#{evaTime})
+    </insert>
+</mapper>

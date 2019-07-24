@@ -7,6 +7,7 @@ import com.hellojava.entity.BusinessType;
 import com.hellojava.entity.Commodity;
 import com.hellojava.entity.CommodityType;
 import com.hellojava.service.impl.CommodityTypeServiceImpl;
+import com.hellojava.utils.UploadPic;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,6 +33,10 @@ public class BackCommodityController {
     private CommodityReposity commodityReposity;
 
     @Autowired
+    private UploadPic uploadPic;
+
+
+    @Autowired
     private CommodityTypeServiceImpl commodityTypeService;
 
     @Autowired
@@ -42,6 +47,7 @@ public class BackCommodityController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ApiOperation(value = "增加商品信息", notes = "增加商品")
     public Integer insert(HttpServletRequest request,@RequestBody @ApiParam Commodity commodity){
+        commodity.setComImg(uploadPic.getPic(commodity.getPic()));
         Commodity save = commodityReposity.save(commodity);
         //给商品分类表中添加数据,走jpa
         String comTypeName=request.getParameter("comTypeName");
@@ -103,6 +109,7 @@ public class BackCommodityController {
     @RequestMapping(value = "/update1",method = RequestMethod.PUT)
     @ApiOperation(value = "修改商品信息", notes = "修改商品")
     public Integer update1(Model model, HttpServletRequest request, Commodity commodity) {
+        commodity.setComImg(uploadPic.getPic(commodity.getPic()));
         Commodity save = commodityReposity.save(commodity);
         //保存商品分类的信息
         String comTypeName=request.getParameter("comTypeName");

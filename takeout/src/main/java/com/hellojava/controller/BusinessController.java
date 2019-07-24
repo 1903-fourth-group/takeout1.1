@@ -24,7 +24,7 @@ public class BusinessController {
      * @param busTypeName
      * @return
      */
-    @RequestMapping(value = "/loadByTypeId/{busTypeName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/loadByTypeId", method = RequestMethod.GET)
     @ApiOperation(value = "通过前台传递的商品类型 查询该类型下的所有分类表",notes = "所需参数：五大分类的名称"+"\n"
             +"返回参数：对应该分类下的子分类")
     public QueryResponseResult loadByTypeId(String busTypeName) {
@@ -38,7 +38,7 @@ public class BusinessController {
      * @param busTypeName
      * @return
      */
-    @RequestMapping(value = "/loadByTypeBusinessAll/{busTypeName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/loadByTypeBusinessAll", method = RequestMethod.GET)
     @ApiOperation(value = "通过前台传递的商品类型 查询该类型下的所有商家",notes = "所需参数：五大分类的名称"+"\n"
             +"返回参数：对应该分类下的所有商家信息")
     public QueryResponseResult loadByTypeBusinessAll(String busTypeName) {
@@ -51,7 +51,7 @@ public class BusinessController {
      * @param busType
      * @return
      */
-    @RequestMapping(value = "/loadByTypeIdAll/{busType}", method = RequestMethod.GET)
+    @RequestMapping(value = "/loadByTypeIdAll", method = RequestMethod.GET)
     @ApiOperation(value = "通过前台传递的商家分类编号 查询该类型下的所有商家",notes = "所需参数：小分类的id（busType）"+"\n"
             +"返回参数：对应该分类下的所有商家信息")
     public QueryResponseResult loadByTypeIdAll(int busType) {
@@ -65,7 +65,7 @@ public class BusinessController {
      * @param busId
      * @return
      */
-    @RequestMapping(value = "/loadBybusId/{busId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/loadBybusId", method = RequestMethod.GET)
     @ApiOperation(value = "通过id查询商家详细信息",notes = "商家id(busId)" + "\n"
             + "返回参数：商品基本信息（商家表business内所有字段信息）")
     public QueryResponseResult loadBybusId(int busId) {
@@ -80,7 +80,7 @@ public class BusinessController {
      * @param busId
      * @return
      */
-    @RequestMapping(value = "/selectByBusIdEvaluation/{busId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectByBusIdEvaluation", method = RequestMethod.GET)
     @ApiOperation(value = "通过前台传递的商家id 查询商家的所有评价",notes = "商家id(busId)" + "\n"
             + "返回参数：评价信息（评价表evaluation内所有字段信息）")
     public QueryResponseResult selectByBusIdEvaluation(int busId) {
@@ -94,7 +94,7 @@ public class BusinessController {
      * @param userId
      * @return
      */
-    @RequestMapping(value = "/selectByUserIdCollection/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectByUserIdCollection", method = RequestMethod.GET)
     @ApiOperation(value = "通过前台传递的用户id 查询用户收藏的所有店铺",notes = "用户id(userId)" + "\n"
             + "返回参数：商品基本信息（商家表business内所有字段信息）")
     public QueryResponseResult selectByUserIdCollection(int userId) {

@@ -17,7 +17,7 @@
         select * from user_info
     </select>
     <select id="findOneByUser" resultMap="userResult">
-        select * from user_info where user_name=#{userName} and user_password=#{userPassword}
+        select * from user_info where user_email=#{userEmail} and user_password=#{userPassword}
     </select>
     <insert id="addUser" parameterType="user">
         insert into user_info VALUES(DEFAULT,#{via},#{userName},#{userPassword},#{phone},#{address},#{userEmail},#{balance})

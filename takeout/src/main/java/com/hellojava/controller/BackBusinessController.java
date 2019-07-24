@@ -5,6 +5,7 @@ import com.hellojava.dao.BusinessDao.BusinessRepository;
 import com.hellojava.entity.Business;
 import com.hellojava.entity.BusinessType;
 import com.hellojava.service.impl.BusinessTypeServiceImpl;
+import com.hellojava.utils.UploadPic;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -25,6 +27,8 @@ public class BackBusinessController {
 
     @Autowired
     private BusinessRepository businessRepository;
+    @Autowired
+    private UploadPic uploadPic;
 
     @Autowired
     private BusinessTypeServiceImpl businessTypeService;
@@ -32,11 +36,11 @@ public class BackBusinessController {
     //增加商家信息
     @RequestMapping(value = "/insertbusiness",method = RequestMethod.POST)
     @ApiOperation(value = "增加商家信息", notes = "增加商家")
-    public Integer insert(HttpServletRequest request, Business business){
+    public Integer insert(HttpServletRequest request,Business business){
+        business.setBusImg(uploadPic.getPic(business.getPic()));
         Business save = businessRepository.save(business);
         return save!=null?1:0;
     }
-
 
     //加载商家信息，查询所有；
     @RequestMapping(value = "/selectbusiness",method = RequestMethod.GET)
@@ -73,7 +77,8 @@ public class BackBusinessController {
     //修改商家信息，后保存2；
     @RequestMapping(value = "/update1business",method = RequestMethod.PUT)
     @ApiOperation(value = "修改商家信息", notes = "修改商家")
-    public Integer update1(Model model, HttpServletRequest request, Business business) {
+    public Integer update1(Model model, HttpServletRequest request,Business business) {
+        business.setBusImg(uploadPic.getPic(business.getPic()));
         Business save = businessRepository.save(business);
         return save!=null?1:0;
     }

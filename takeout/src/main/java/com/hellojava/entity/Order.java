@@ -2,10 +2,7 @@ package com.hellojava.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -20,7 +17,7 @@ public class Order implements Serializable {
     @Column(name = "order_address")
     private String orderAddress;
     @Column(name = "order_phone")
-    private Integer orderPhone;
+    private String orderPhone;
     @Column(name = "total_price")
     private double totalPrice;
     @Column(name = "order_time")
@@ -31,4 +28,7 @@ public class Order implements Serializable {
     private String recivePeople;
     @Column(name = "user_id")
     private Integer userId;
+    @Transient
+    private String comIds;
+
 }

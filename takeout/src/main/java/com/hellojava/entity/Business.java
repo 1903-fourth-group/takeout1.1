@@ -1,6 +1,7 @@
 package com.hellojava.entity;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,5 +36,11 @@ public class Business implements Serializable {
     private double deliveryTime;
     @Column(name = "bus_bustype")
     private double bussType;
+    @Column(name = "bus_balance")
+    private double busBalance;
+
+
+    @Transient
+    private MultipartFile pic;
 
 }
