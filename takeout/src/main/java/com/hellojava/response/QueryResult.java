@@ -1,6 +1,7 @@
 package com.hellojava.response;
 
 import com.hellojava.entity.Business;
+import com.hellojava.entity.EmailInfo;
 import com.hellojava.entity.Order;
 import com.hellojava.entity.User;
 import lombok.Data;
@@ -24,5 +25,7 @@ public class QueryResult<T> {
     private Order order;
 
     private Business business;
+
+    private EmailInfo emailInfo;
 
 }

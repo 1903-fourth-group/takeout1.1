@@ -25,4 +25,7 @@ public class User implements Serializable {
     @Column(name = "user_email")
     private String userEmail;
     private Double balance;
+
+    @Column(name = "pay_pwd")
+    private String payPwd;
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hellojava.dao.UserDao.EmailMapper">
+    <resultMap id="emailResult" type="emailInfo">
+        <id column="email_id" property="emailId"></id>
+        <result column="user_email" property="userEmail"></result>
+        <result column="email_time" property="emailTime"></result>
+        <result column="email_pwd" property="emailPwd"></result>
+    </resultMap>
+    <select id="findOneEmail" resultMap="emailResult">
+        select * from email_info where user_email=#{userEmail} and email_pwd=#{emailPwd}
+    </select>
+    <insert id="addEmail" parameterType="emailInfo">
+        insert into email_info VALUES (#{emailId},#{userEmail},#{emailTime},#{emailPwd})
+    </insert>
+    <delete id="deleteEmailPwd" parameterType="emailInfo">
+        delete from email_info where user_email=#{userEmail}
+    </delete>
+    <select id="findUserEmail" parameterType="emailInfo" resultMap="emailResult">
+        select * from email_info where user_email=#{userEmail}
+    </select>
+</mapper>

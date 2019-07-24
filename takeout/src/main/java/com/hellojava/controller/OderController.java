@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -34,7 +35,7 @@ public class OderController {
     @ResponseBody
     @RequestMapping(value = "insertorder", method = RequestMethod.POST)
     @ApiOperation(value = "用户点击付款提交订单",notes = "所需参数：商品id(拼接字符串-,Ids),订单信息(订单order表内基本信息)")
-    public void insertorder(@RequestBody Order shoppingOrder) {
+    public void insertorder(@RequestBody Order shoppingOrder, HttpSession session) {
         System.out.println(shoppingOrder);
         String orderid = "";
         Random random = new Random();
@@ -60,6 +61,7 @@ public class OderController {
         map.put("orderids", orderids);
 
         orderDao.insertordercom(map);
+        session.setAttribute("orderid",orderid);
 
     }
 

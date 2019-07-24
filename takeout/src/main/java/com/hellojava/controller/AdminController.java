@@ -22,11 +22,10 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/AdminLogin",method = RequestMethod.POST)
     @ApiOperation(value = "登录",notes="test: 0代表密码错误，1代表密码成功")
     public QueryResponseResult loadByAdmin(@RequestBody Admin admin){
         //返回一个Integer类型，
         return adminService.loadByAdmin(admin);
     }
-
 }
