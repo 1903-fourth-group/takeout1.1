@@ -26,7 +26,8 @@ public class Commodity implements Serializable {
     private int comBus;
     @Column(name="com_type")
     private int comType;
-
+    @Column(name = "com_taste")
+    private String comTaste;
     @Transient
     private MultipartFile pic;
 }

@@ -44,6 +44,13 @@ public class Business implements Serializable {
     private String busDiscount;
     @Column(name = "bus_notice")
     private String busNotice;
+    @Column(name="discount_ticket")
+    private String discountTicket;
+    @Column(name = "insurance")
+    private Integer insurance;
+    @Column(name = "bus_position")
+    private String busPosition;
+
 
     @Transient
     private MultipartFile pic;

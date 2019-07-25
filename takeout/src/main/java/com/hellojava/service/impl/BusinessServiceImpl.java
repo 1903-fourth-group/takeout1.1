@@ -77,6 +77,12 @@ public class BusinessServiceImpl implements BusinessService {
             b.setDistance(byId.get().getDistance());
             b.setDeliveryTime(byId.get().getDeliveryTime());
             b.setBussType(byId.get().getBussType());
+            b.setBusBalance(byId.get().getBusBalance());
+            b.setBusGrade(byId.get().getBusGrade());
+            b.setDiscountTicket(byId.get().getDiscountTicket());
+            b.setBusDiscount(byId.get().getBusDiscount());
+            b.setBusNotice(byId.get().getBusNotice());
+            b.setInsurance(byId.get().getInsurance());
             businesses.add(b);
         }
         QueryResult<Business> businessQueryResult = new QueryResult<>();
