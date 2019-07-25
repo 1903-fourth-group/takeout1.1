@@ -12,5 +12,6 @@ public interface Iordershopping {
     public void updateorderstatu(String id);
     QueryResponseResult loadAll(Integer userId);
     QueryResponseResult loadorderInfoByoId(String orderId);
+    public int loadtotalbycomid(Integer comId,Integer orderId);
 
 }

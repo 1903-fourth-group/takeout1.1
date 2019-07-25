@@ -1,7 +1,9 @@
 package com.hellojava.dao.OrderDao;
 
+import com.hellojava.entity.Comtotal;
 import com.hellojava.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -15,5 +17,7 @@ public interface OrderDao {
     //通过用户ID查询其所有订单
     public List<String> loadOidByUid(Integer uid);
     //添加商品--订单映射
-    public int insertordercom(Map<String, List> map);
+    public int insertordercom(List<Comtotal> comtotals);
+    public Integer loadtotalbycomid(@Param("comId") Integer comId,
+                                    @Param("orderid") Integer orderid);
 }

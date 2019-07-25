@@ -28,7 +28,11 @@ public class Order implements Serializable {
     private String recivePeople;
     @Column(name = "user_id")
     private Integer userId;
+    @Column(name = "order_remark")
+    private String orderRemark;
     @Transient
     private String comIds;
+    @Transient
+    private String comtotal;
 
 }

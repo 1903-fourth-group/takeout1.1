@@ -80,6 +80,11 @@ public class OrderShoppingService implements Iordershopping {
 
 
     }
-
-
+    @Override
+    public int loadtotalbycomid(Integer comId,Integer orderId) {
+        return oderDao.loadtotalbycomid(comId,orderId);
+    }
 }
+
+
+

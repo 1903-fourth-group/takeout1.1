@@ -12,12 +12,14 @@
     <result column="order_state" property="orderState"></result>
     <result column="user_id" property="userId"></result>
     <result column="recive_people" property="recivePeople"></result>
+    <result column="order_remake" property="orderRemark"></result>
 
 </resultMap>
 <insert id="insertOrder" parameterType="order">
         insert into shopping_order value (#{orderId},#{orderBusiness},
-        #{orderAddress},#{orderPhone},#{totalPrice},#{orderTime},#{orderState},#{userId},#{recivePeople})
+        #{orderAddress},#{orderPhone},#{totalPrice},#{orderTime},#{orderState},#{userId},#{recivePeople},#{orderRemark})
     </insert>
+
 <select id="loadBystatu" resultMap="orderResult">
        select * from shopping_order where order_state=2
     </select>
@@ -30,10 +32,13 @@
     <select id="loadOidByUid" parameterType="int" resultType="string">
         select order_id from shopping_order where user_id=#{userId}
     </select>
-    <insert id="insertordercom" parameterType="map">
+    <insert id="insertordercom" parameterType="list">
         insert into order_business values
-        <foreach collection="comids" separator=","  item="comid">
-            (${orderids[0]},#{comid})
+        <foreach collection="list" separator="," item="c">
+            (#{c.orderId},#{c.comId},#{c.comTotal})
         </foreach>
     </insert>
+    <select id="loadtotalbycomid" resultType="integer">
+        select com_total from order_business where commodity_id=#{comId} and order_id=#{orderid}
+    </select>
 </mapper>

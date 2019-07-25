@@ -2,6 +2,7 @@ package com.hellojava.controller;
 
 import com.google.gson.JsonObject;
 import com.hellojava.dao.OrderDao.OrderDao;
+import com.hellojava.entity.Comtotal;
 import com.hellojava.entity.Order;
 import com.hellojava.entity.User;
 import com.hellojava.response.QueryResponseResult;
@@ -35,8 +36,8 @@ public class OderController {
     @ResponseBody
     @RequestMapping(value = "insertorder", method = RequestMethod.POST)
     @ApiOperation(value = "用户点击付款提交订单",notes = "所需参数：商品id(拼接字符串-,Ids),订单信息(订单order表内基本信息)")
-    public void insertorder(@RequestBody Order shoppingOrder, HttpSession session) {
-        System.out.println(shoppingOrder);
+    public void insertorder(@RequestBody Order order, HttpSession session) {
+        System.out.println(order);
         String orderid = "";
         Random random = new Random();
         for (int i = 0; i < 6; i++) {
@@ -44,23 +45,25 @@ public class OderController {
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
         String date = dateFormat.format(new Date());
-        shoppingOrder.setOrderTime(date);
-        shoppingOrder.setOrderState(2);
-        shoppingOrder.setOrderId(orderid);
-        orderShoppingService.insertOrder(shoppingOrder);
-        String comIds=shoppingOrder.getComIds();
+        order.setOrderTime(date);
+        order.setOrderState(2);
+        order.setOrderId(orderid);
+        orderShoppingService.insertOrder(order);
+        String comIds=order.getComIds();
+        String comTotal=order.getComtotal();
         String[] comIds1 = comIds.split("-");
-        List<String> comids = new ArrayList<>();
-        for (int i = 0; i < comIds1.length; i++) {
-            comids.add(comIds1[i]);
-        }
-        List<String> orderids = new ArrayList<>();
-        orderids.add(orderid);
-        Map<String, List> map = new HashMap<>();
-        map.put("comids", comids);
-        map.put("orderids", orderids);
+        String [] comtotal=comTotal.split("-");
+        List<Comtotal> comtotalList=new ArrayList<>();
+        for (int i=0;i<comIds1.length;i++){
+            Comtotal com=new Comtotal();
+            com.setComId(Integer.parseInt(comIds1[i]));
+            com.setComTotal(Integer.parseInt(comtotal[i]));
+            com.setOrderId(orderid);
+            comtotalList.add(com);
 
-        orderDao.insertordercom(map);
+        }
+
+        orderDao.insertordercom(comtotalList);
         session.setAttribute("orderid",orderid);
 
     }
