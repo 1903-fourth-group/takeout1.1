@@ -68,17 +68,20 @@ public class OrderShoppingService implements Iordershopping {
 
     @Override
     public QueryResponseResult loadorderInfoByoId(String orderId) {
-       Order order=oderDao.loadorderInfoById(orderId);
+        Integer orderid=Integer.parseInt(orderId);
+        Order order=oderDao.loadorderInfoById(orderId);
         QueryResult orderResult=new QueryResult();
         orderResult.setOrder(order);
         List<Commodity> commodities=commodityRepository.findByorderId(orderId);
+        for(int i=0;i<commodities.size();i++){
+            Integer comId=commodities.get(i).getComId();
+            commodities.get(i).setComTotal(oderDao.loadtotalbycomid(comId,orderid));
+        }
         orderResult.setList(commodities);
         Business business=businessRepository.findByorderId(orderId);
         orderResult.setBusiness(business);
+
         return new QueryResponseResult<>(CommonCode.SUCCESS,orderResult);
-
-
-
     }
     @Override
     public int loadtotalbycomid(Integer comId,Integer orderId) {

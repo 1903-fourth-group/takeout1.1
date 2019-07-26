@@ -22,5 +22,9 @@ public class UserDetail {
     private String detailAddress;
     @Column(name = "detail_phone")
     private String detailPhone;
+    @Column(name = "user_sex")
+    private Integer userSex;
+    @Column(name = "address_tag")
+    private String addressTag;
 
 }

@@ -28,6 +28,12 @@ public class Commodity implements Serializable {
     private int comType;
     @Column(name = "com_taste")
     private String comTaste;
+    @Column(name="discount_ticket")
+    private String discountTicket;
+    @Transient
+    private Integer comTotal;
+    @Column(name="com_mount")
+    private Integer comMount;
     @Transient
     private MultipartFile pic;
 }

@@ -9,8 +9,11 @@
         <result column="eva_detail" property="evaDetail"></result>
         <result column="eva_grade" property="evaGrade"></result>
         <result column="eva_img" property="evaImg"></result>
+        <result column="eva_time" property="evaTime"></result>
+        <result column="user_name" property="userName"></result>
+        <result column="user_via" property="userVia"></result>
     </resultMap>
     <insert id="saveEvaluation" parameterType="evaluation">
-        insert into evaluation values(default,#{evaOrder},#{evaDetail},#{evaGrade},#{evaImg},#{evaTime})
+        insert into evaluation values(default,#{evaOrder},#{evaDetail},#{evaGrade},#{evaImg},#{evaTime},#{userName},#{userVia})
     </insert>
 </mapper>

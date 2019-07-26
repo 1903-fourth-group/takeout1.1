@@ -37,7 +37,9 @@ public class CommodityServiceImpl implements CommodityService {
             commodity.setComSalesPerMonth(byId.get().getComSalesPerMonth());
             commodity.setComBus(byId.get().getComBus());
             commodity.setComType(byId.get().getComType());
+            commodity.setDiscountTicket(byId.get().getDiscountTicket());
             commodity.setComTaste(byId.get().getComTaste());
+            commodity.setComMount(byId.get().getComMount());
             C.add(commodity);
         }
         QueryResult<Commodity> commodityQueryResult = new QueryResult<>();

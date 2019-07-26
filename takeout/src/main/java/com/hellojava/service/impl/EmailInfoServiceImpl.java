@@ -94,12 +94,22 @@ public class EmailInfoServiceImpl implements EmailInfoService {
         if (userEmail2 != null) {
             if (userEmail2.getEmailPwd().equals(emailInfo.getEmailPwd())) {
                 User oneByUser = userDao.findOneByUser(emailInfo.getUserEmail());
-                if (oneByUser != null) {
+                if (oneByUser!=null) {
                     EmailInfo oneEmail = emailMapper.findOneEmail(emailInfo);
+                    queryResult.setUser(oneByUser);
                 } else {
+                    String str="abcdefghigklmnopqrstuvwxyz0123456789";
+                    Random random = new Random();
+                    StringBuffer sb=new StringBuffer();
+                    for(int i=0;i<=10;i++){
+                        int number=random.nextInt(str.length());
+                        sb.append(str.charAt(number));
+                    }
                     User user = new User();
                     user.setUserEmail(emailInfo.getUserEmail());
+                    user.setUserName(sb.toString());
                     userDao.addUser(user);
+                    queryResult.setUser(user);
                 }
                 result = 1;
             }

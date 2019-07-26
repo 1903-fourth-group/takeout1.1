@@ -17,4 +17,6 @@ public class BusinessType implements Serializable {
     private int typePid;
     @Column(name = "bus_type_name")
     private String typeName;
+    @Column(name = "bus_type_img")
+    private String typeImg;
 }
