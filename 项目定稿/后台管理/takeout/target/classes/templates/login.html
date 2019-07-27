@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<style>
+
+	</style>
+  </head>
+  <body>
+<!--    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">-->
+      <div class="container" style="background-color:white">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" href="index.html" style="font-size:32px;background-color:white">千锋-外卖后台管理系统</a></div>
+        </div>
+      </div>
+<!--    </nav>-->
+
+    <div class="container" style="height: 480px; background-image: linear-gradient(-135deg, #FFD161 0%, #FFBD27 100%)">
+
+      <form class="form-signin" role="form" action="/backlogin" method="post">
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-user"></i> 用户登录</h2>
+		  <div class="form-group has-success has-feedback">
+			<input type="text" class="form-control" id="name" name="name" placeholder="请输入登录账号" autofocus>
+			<span class="glyphicon glyphicon-user form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="password" class="form-control" id="pass" name="pass" placeholder="请输入登录密码" style="margin-top:10px;">
+			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		  </div>
+          <input type="submit" class="form-control">
+
+
+      </form>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    </script>
+  </body>
+</html>

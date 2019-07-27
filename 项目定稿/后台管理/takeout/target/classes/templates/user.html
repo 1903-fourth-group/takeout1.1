@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="GB18030" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="jquery\jquery-2.1.1.min.js"></script>
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor:pointer;
+        }
+        .tree-closed {
+            height : 40px;
+        }
+        .tree-expanded {
+            height : auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="background-image: linear-gradient(-135deg, #FFD161 0%, #FFBD27 100%)">
+            <div class="tree">
+                <ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px" >
+                        <a href="selectbusiness"><i class="glyphicon glyphicon-dashboard"></i> 商家管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px">
+                        <a href="selectcategory"><i class="glyphicon glyphicon-dashboard"></i> 分类管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" >
+                        <a href="selectUser"><i class="glyphicon glyphicon-dashboard"></i> 用户管理</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">用户管理</h1>
+            查询用户:<input th:value="${userName}" type="text" name="userName" method="get" id="inp"><button id="find">查找</button>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <td>用户编号</td>
+                    <td>用户名</td>
+                    <td>用户头像</td>
+                    <td>手机号码</td>
+                    <td>默认收货地址</td>
+                    <td>邮箱地址</td>
+                    <td>余额</td>
+                </tr>
+
+                <tr id="tab" th:each="user:${userList}">
+                    <td th:text="${user.userId}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td><img th:src="${user.via}" style="width: 70px;height: 40px"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td th:text="${user.userEmail}"></td>
+                    <td th:text="${user.balance}"></td>
+                </tr>
+            </table>
+            <div style="text-align: center">
+                <ul class="pagination" id="fenye">
+                    <li><a href="selectUser?page=1">首页</a></li>
+                    <li><a th:href="@{selectUser(page=${currentPage}-1)}">上一页</a></li>
+                    <li><a th:href="@{selectUser(page=${currentPage}+1)}">下一页</a></li>
+                    <li><a th:href="@{selectUser(page=${maxPage})}">尾页</a></li>
+                    <input type="hidden" id="fen" th:value="${userName}">
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if($("#fen").val()!=""){
+            $("#fenye").css({opacity:0});
+        }else {
+            $("#fenye").css({opacity:1});
+        }
+    })
+
+    $("#find").click(function () {
+        var userName = $("#inp").val();
+        window.location.href="findUser?userName="+userName;
+    });
+</script>
+</body>
+</html>

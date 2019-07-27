@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="GB18030" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+	.tree li {
+        list-style-type: none;
+		cursor:pointer;
+	}
+	.tree-closed {
+	    height : 40px;
+	}
+	.tree-expanded {
+	    height : auto;
+	}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="background-image: linear-gradient(-135deg, #FFD161 0%, #FFBD27 100%)">
+			<div class="tree">
+				<ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px" >
+                        <a href="selectbusiness"><i class="glyphicon glyphicon-dashboard"></i> 商家管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px">
+                        <a href="selectcategory"><i class="glyphicon glyphicon-dashboard"></i> 分类管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" >
+                        <a href="selectUser"><i class="glyphicon glyphicon-dashboard"></i> 用户管理</a>
+                    </li>
+				</ul>
+			</div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">商品管理</h1>
+            <button><a th:href="@{selectComType(busId=${commodity.getComBus()})}">返回上一层</a></button>
+            <button class="btn-info"><a th:href="@{insert(comBus=${commodity.getComBus()},comType=${commodity.getComType()})}">增加商品</a></button>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <td>商品编号</td>
+                    <td>商品名</td>
+                    <td>商品图片</td>
+                    <td>商品价格</td>
+                    <td>商品月售</td>
+                    <td>商家编号</td>
+                    <td>商品分类编号</td>
+                    <td>口味</td>
+                    <td>折扣券</td>
+                    <td colspan="2">操作</td>
+                </tr>
+
+                <tr th:each="commodity:${commodityList}">
+                    <td th:text="${commodity.comId}"></td>
+                    <td th:text="${commodity.comName}"></td>
+                    <td><img th:src="${commodity.comImg}" style="width: 70px;height: 40px;"></td>
+                    <td th:text="${commodity.comPrice}"></td>
+                    <td th:text="${commodity.comSalesPerMonth}"></td>
+                    <td th:text="${commodity.comBus}"></td>
+                    <td th:text="${commodity.comType}"></td>
+                    <td th:text="${commodity.comTaste}"></td>
+                    <td th:text="${commodity.discountTicket}"></td>
+                    <td><a th:href="@{update(comId=${commodity.comId},comBus=${commodity.getComBus()})}">修改商品信息</a></td>
+                    <td><a th:href="@{delete(comId=${commodity.comId},comBus=${commodity.getComBus()})}">删除商品</a></td>
+                </tr>
+            </table>
+
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+        <script type="text/javascript">
+
+        </script>
+  </body>
+</html>

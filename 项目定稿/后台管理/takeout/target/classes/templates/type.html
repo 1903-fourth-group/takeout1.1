@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="GB18030" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+	.tree li {
+        list-style-type: none;
+		cursor:pointer;
+	}
+	.tree-closed {
+	    height : 40px;
+	}
+	.tree-expanded {
+	    height : auto;
+	}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="background-image: linear-gradient(-135deg, #FFD161 0%, #FFBD27 100%)">
+			<div class="tree">
+				<ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px" >
+                        <a href="selectbusiness"><i class="glyphicon glyphicon-dashboard"></i> 商家管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px">
+                        <a href="selectcategory"><i class="glyphicon glyphicon-dashboard"></i> 分类管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" >
+                        <a href="selectUser"><i class="glyphicon glyphicon-dashboard"></i> 用户管理</a>
+                    </li>
+				</ul>
+			</div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">商家二级分类</h1>
+            <button class="btn-info"><a th:href="@{inserttype(typePid=${typeId})}">增加二级分类</a></button>
+            <table class="table">
+                <tr th:each="type:${businessTypeList}">
+                    <td><img th:src="${type.typeImg}" style="width: 70px;height: 40px"></td>
+                    <td th:text="${type.typeName}"></td>
+                    <td ><a th:href="@{deletetype(typeId=${type.typeId},typePid=${type.typePid})}">删除二级分类</a></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+        <script type="text/javascript">
+
+        </script>
+  </body>
+</html>

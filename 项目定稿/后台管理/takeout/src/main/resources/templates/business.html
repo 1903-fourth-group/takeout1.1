@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="GB18030" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+	.tree li {
+        list-style-type: none;
+		cursor:pointer;
+	}
+	.tree-closed {
+	    height : 40px;
+	}
+	.tree-expanded {
+	    height : auto;
+	}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="background-image: linear-gradient(-135deg, #FFD161 0%, #FFBD27 100%)">
+			<div class="tree">
+				<ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px" >
+                        <a href="selectbusiness"><i class="glyphicon glyphicon-dashboard"></i> 商家管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" style="margin-bottom: 100px">
+                        <a href="selectcategory"><i class="glyphicon glyphicon-dashboard"></i> 分类管理</a>
+                    </li>
+                    <li class="list-group-item tree-closed" >
+                        <a href="selectUser"><i class="glyphicon glyphicon-dashboard"></i> 用户管理</a>
+                    </li>
+				</ul>
+			</div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">商家管理</h1>
+            <button class="btn-info"><a href="/insertbusiness">增加商家</a></button>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <td>商家编号</td>
+                    <td>商家名</td>
+                    <td>商家图片</td>
+                    <td>商家地址</td>
+                    <td>月销售额</td>
+                    <td>最低配送</td>
+                    <td>日间配送费</td>
+                    <td>夜间配送费</td>
+                    <td>人均消费</td>
+                    <td>发票</td>
+                    <td>商家评分</td>
+                    <td>商家优惠</td>
+                    <td>商家公告</td>
+                    <td>商家准时宝</td>
+                    <td>商家坐标</td>
+                    <td colspan="3">操作</td>
+                </tr>
+
+                <tr th:each="business:${businessList}">
+                    <td th:text="${business.busId}"></td>
+                    <td th:text="${business.busName}"></td>
+                    <td><img th:src="${business.busImg}" style="width: 70px;height: 40px"></td>
+                    <td th:text="${business.busAddress}"></td>
+                    <td th:text="${business.busSalesPerMonth}"></td>
+                    <td th:text="${business.minDelivery}"></td>
+                    <td th:text="${business.deliveryCostDay}"></td>
+                    <td th:text="${business.deliveryCostNight}"></td>
+                    <td th:text="${business.consumePerHead}"></td>
+                    <td th:text="${business.debit}"></td>
+                    <td th:text="${business.busGrade}"></td>
+                    <td th:text="${business.busDiscount}"></td>
+                    <td th:text="${business.busNotice}"></td>
+                    <td th:text="${business.insurance}"></td>
+                    <td th:text="${business.busPosition}"></td>
+                    <td><a th:href="@{updatebusiness(busId=${business.busId})}">修改</a></td>
+                    <td><a th:href="@{deletebusiness(busId=${business.busId})}">删除</a></td>
+                    <td><a th:href="@{selectComType(busId=${business.busId})}">店铺</a></td>
+                </tr>
+                <tr >
+                    <td colspan="16" align="center">
+                        <ul class="pagination">
+                            <li><a href="selectbusiness?page=1">首页</a></li>
+                            <li><a th:href="@{selectbusiness(page=${currentPage}-1)}">上一页</a></li>
+                            <li><a th:href="@{selectbusiness(page=${currentPage}+1)}">下一页</a></li>
+                            <li><a th:href="@{selectbusiness(page=${maxPage})}">尾页</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+        <script type="text/javascript">
+
+        </script>
+  </body>
+</html>

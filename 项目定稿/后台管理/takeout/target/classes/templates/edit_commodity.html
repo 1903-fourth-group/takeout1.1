@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+    </div>
+</nav>
+<h1 style="margin: auto">商品信息修改</h1>
+    <form class="form-signin" action="update1" enctype="multipart/form-data" method="post" style="width: 400px;margin: auto">
+        <input class="form-control" th:value="${commodity.comId}" type="hidden" name="comId">
+        商品名称：<input class="form-control" th:value="${commodity.comName}" name="comName">
+        商品图片：<input class="form-control" name="multipartFile" type="file">
+        <input class="form-control" th:value="${commodity.comImg}" type="hidden" name="comImg">
+        商品价格：<input class="form-control" th:value="${commodity.comPrice}" name="comPrice">
+        商品口味：<input class="form-control" th:value="${commodity.comTaste}" name="comTaste">
+        <input class="form-control" th:value="${commodity.comSalesPerMonth}"type="hidden" name="comSalesPerMonth">
+        <input class="form-control" th:value="${commodity.comBus}" name="comBus" type="hidden">
+        <input class="form-control" th:value="${commodity.comType}" name="comType" type="hidden">
+        <input class="form-control btn-success" type="submit" style="margin-top: 40px">
+    </form>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div style="height: 10px"></div>
+    <form class="form-signin" action="update1business" method="post" enctype="multipart/form-data"
+          style="width: 400px;margin: auto">
+        商家名称：<input class="form-control" name="busName">
+        商家图片：<input class="form-control" name="multipartFile" type="file">
+        商家地址： <input class="form-control" name="busAddress">
+        最低配送： <input class="form-control" name="minDelivery">
+        日间配送费： <input class="form-control" name="deliveryCostDay">
+        夜间配送费：<input class="form-control" name="deliveryCostNight">
+        发票： <input class="form-control" name="debit">
+        商家公告： <input class="form-control" name="busNotice">
+        商家准时宝： <input class="form-control" name="insurance">
+        商家类型：
+        <select id="select" name="bussType">
+            <option th:each="busTypesAfter5:${busTypesAfter5}" th:value="${busTypesAfter5.typeId}"
+                    th:text="${busTypesAfter5.typeName}"></option>
+        </select><br>
+        <input class="form-control btn-success" type="submit">
+    </form>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">千锋-外卖后台管理系统</a></div>
+        </div>
+    </div>
+</nav>
+<h2 style="margin: auto">商家信息修改</h2>
+    <form class="form-signin" action="update2business" method="post" enctype="multipart/form-data" style="width: 400px;margin: auto">
+        <input class="form-control" th:value="${business.busId}" type="hidden" name="busId">
+        商品名称：<input class="form-control" th:value="${business.busName}" name="busName">
+        商家图片：<input class="form-control" name="multipartFile" type="file">
+        <input class="form-control" th:value="${business.busImg}" name="busImg" type="hidden">
+        商品地址：<input class="form-control" th:value="${business.busAddress}" name="busAddress">
+        <input class="form-control" th:value="${business.busSalesPerMonth}"type="hidden" name="busSalesPerMonth">
+        最低配送：<input class="form-control" th:value="${business.minDelivery}" name="minDelivery">
+        日间配送费：<input class="form-control" th:value="${business.deliveryCostDay}" name="deliveryCostDay">
+        夜间配送费：<input class="form-control" th:value="${business.deliveryCostNight}" name="deliveryCostNight">
+        <input class="form-control" th:value="${business.consumePerHead}" type="hidden" name="consumePerHead">
+        发票：<input class="form-control" th:value="${business.debit}" name="debit">
+        <input class="form-control" th:value="${business.deliveryTime}" type="hidden" name="deliveryTime">
+        商家公告： <input class="form-control" th:value="${business.busNotice}" name="busNotice">
+        商家准时宝： <input class="form-control" th:value="${business.insurance}" name="insurance">
+        商品类型：
+        <select id="select" name="bussType">
+            <option th:each="busTypesAfter5:${busTypesAfter5}" th:value="${busTypesAfter5.typeId}" th:text="${busTypesAfter5.typeName}"></option>
+        </select><br/>
+        <input class="form-control btn-success" type="submit">
+    </form>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+</body>
+</html>
